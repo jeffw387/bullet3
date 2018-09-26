@@ -1,56 +1,57 @@
 
-INCLUDE_DIRECTORIES(
+add_library(LinearMath)
+target_include_directories(LinearMath PUBLIC
 	${BULLET_PHYSICS_SOURCE_DIR}/src
 )
 
 SET(LinearMath_SRCS
-	btAlignedAllocator.cpp
-	btConvexHull.cpp
-	btConvexHullComputer.cpp
-	btGeometryUtil.cpp
-	btPolarDecomposition.cpp
-	btQuickprof.cpp
-	btSerializer.cpp
-	btSerializer64.cpp
-	btThreads.cpp
-	btVector3.cpp
-	TaskScheduler/btTaskScheduler.cpp
-	TaskScheduler/btThreadSupportPosix.cpp
-	TaskScheduler/btThreadSupportWin32.cpp
+${CMAKE_CURRENT_SOURCE_DIR}/btAlignedAllocator.cpp
+${CMAKE_CURRENT_SOURCE_DIR}/btConvexHull.cpp
+${CMAKE_CURRENT_SOURCE_DIR}/btConvexHullComputer.cpp
+${CMAKE_CURRENT_SOURCE_DIR}/btGeometryUtil.cpp
+${CMAKE_CURRENT_SOURCE_DIR}/btPolarDecomposition.cpp
+${CMAKE_CURRENT_SOURCE_DIR}/btQuickprof.cpp
+${CMAKE_CURRENT_SOURCE_DIR}/btSerializer.cpp
+${CMAKE_CURRENT_SOURCE_DIR}/btSerializer64.cpp
+${CMAKE_CURRENT_SOURCE_DIR}/btThreads.cpp
+${CMAKE_CURRENT_SOURCE_DIR}/btVector3.cpp
+${CMAKE_CURRENT_SOURCE_DIR}/TaskScheduler/btTaskScheduler.cpp
+${CMAKE_CURRENT_SOURCE_DIR}/TaskScheduler/btThreadSupportPosix.cpp
+${CMAKE_CURRENT_SOURCE_DIR}/TaskScheduler/btThreadSupportWin32.cpp
 )
 
 SET(LinearMath_HDRS
-	btAabbUtil2.h
-	btAlignedAllocator.h
-	btAlignedObjectArray.h
-	btConvexHull.h
-	btConvexHullComputer.h
-	btDefaultMotionState.h
-	btGeometryUtil.h
-	btGrahamScan2dConvexHull.h
-	btHashMap.h
-	btIDebugDraw.h
-	btList.h
-	btMatrix3x3.h
-	btMinMax.h
-	btMotionState.h
-	btPolarDecomposition.h
-	btPoolAllocator.h
-	btQuadWord.h
-	btQuaternion.h
-	btQuickprof.h
-	btRandom.h
-	btScalar.h
-	btSerializer.h
-	btStackAlloc.h
-	btThreads.h
-	btTransform.h
-	btTransformUtil.h
-	btVector3.h
-	TaskScheduler/btThreadSupportInterface.h
+${CMAKE_CURRENT_SOURCE_DIR}/btAabbUtil2.h
+${CMAKE_CURRENT_SOURCE_DIR}/btAlignedAllocator.h
+${CMAKE_CURRENT_SOURCE_DIR}/btAlignedObjectArray.h
+${CMAKE_CURRENT_SOURCE_DIR}/btConvexHull.h
+${CMAKE_CURRENT_SOURCE_DIR}/btConvexHullComputer.h
+${CMAKE_CURRENT_SOURCE_DIR}/btDefaultMotionState.h
+${CMAKE_CURRENT_SOURCE_DIR}/btGeometryUtil.h
+${CMAKE_CURRENT_SOURCE_DIR}/btGrahamScan2dConvexHull.h
+${CMAKE_CURRENT_SOURCE_DIR}/btHashMap.h
+${CMAKE_CURRENT_SOURCE_DIR}/btIDebugDraw.h
+${CMAKE_CURRENT_SOURCE_DIR}/btList.h
+${CMAKE_CURRENT_SOURCE_DIR}/btMatrix3x3.h
+${CMAKE_CURRENT_SOURCE_DIR}/btMinMax.h
+${CMAKE_CURRENT_SOURCE_DIR}/btMotionState.h
+${CMAKE_CURRENT_SOURCE_DIR}/btPolarDecomposition.h
+${CMAKE_CURRENT_SOURCE_DIR}/btPoolAllocator.h
+${CMAKE_CURRENT_SOURCE_DIR}/btQuadWord.h
+${CMAKE_CURRENT_SOURCE_DIR}/btQuaternion.h
+${CMAKE_CURRENT_SOURCE_DIR}/btQuickprof.h
+${CMAKE_CURRENT_SOURCE_DIR}/btRandom.h
+${CMAKE_CURRENT_SOURCE_DIR}/btScalar.h
+${CMAKE_CURRENT_SOURCE_DIR}/btSerializer.h
+${CMAKE_CURRENT_SOURCE_DIR}/btStackAlloc.h
+${CMAKE_CURRENT_SOURCE_DIR}/btThreads.h
+${CMAKE_CURRENT_SOURCE_DIR}/btTransform.h
+${CMAKE_CURRENT_SOURCE_DIR}/btTransformUtil.h
+${CMAKE_CURRENT_SOURCE_DIR}/btVector3.h
+${CMAKE_CURRENT_SOURCE_DIR}/TaskScheduler/btThreadSupportInterface.h
 )
+target_sources(LinearMath PRIVATE ${LinearMath_SRCS} PUBLIC ${LinearMath_HDRS})
 
-ADD_LIBRARY(LinearMath ${LinearMath_SRCS} ${LinearMath_HDRS})
 SET_TARGET_PROPERTIES(LinearMath PROPERTIES VERSION ${BULLET_VERSION})
 SET_TARGET_PROPERTIES(LinearMath PROPERTIES SOVERSION ${BULLET_VERSION})
 
